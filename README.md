@@ -17,7 +17,9 @@ That way you can run the JJQ batch file from the command-line, wherever you happ
 
 *JSON file:* Any JSON file you want to process.
 
+You can also get a list of the available jq files by doing:
 
+```jjq --help```
 
 Each file is commented.
 
