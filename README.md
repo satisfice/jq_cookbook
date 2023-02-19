@@ -1,6 +1,8 @@
 # jq_cookbook
 Here are my favorite JQ scripts for analysis and web-based testing.
 
+To learn about jq go [https://stedolan.github.io/jq/manual/|here].
+
 ## Installation
 
 For Windows, clone the repo and set the PATH environment variable to point to it. 
