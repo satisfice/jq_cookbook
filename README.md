@@ -1,7 +1,7 @@
 # jq_cookbook
 Here are my favorite JQ scripts for analysis and web-based testing.
 
-To learn about jq go [https://stedolan.github.io/jq/manual/|here].
+To learn about jq go [here](https://stedolan.github.io/jq/manual/).
 
 ## Installation
 
