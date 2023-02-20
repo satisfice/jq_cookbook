@@ -1,59 +1,48 @@
-# This script traverses a HAR file and finds each response that contains json or text mime type.
-# It outputs the URL of each request, with an index number and pretty-printed version of the 
-# content interpreted as a json.
+# This script traverses a HAR file and finds each response that can be interpreted as a JSON.
+# It outputs the URL of each request, with an index number
 #
 
 # Save the original input, because we will need it, below...
-
 . as $original
 | 
 
 # get all the entries
-
 .log.entries 
 | 
 
 # get all the index numbers for the entries
-
 keys 
 | 
 
 # for each entry, save the index number for later...
-
 .[] as $index 
 | 
 
 # ...then go back to the original input and pick out the entry for that index number
-
 $original.log.entries[$index] 
 | 
 
-# check if the content type include "json" or "text"
-# (the reason we check for text type is that in some webapps jsons are mislabeled as text type)
+# create an array
+[
 
-select(
-	.response 
-	| select(.headers[] 
-		| select(.name | test("content-type";"i")) 
-		| select(
-				(.value | contains("json"))
-				or
-				(.value | contains("text"))
+# try to parse it as a json
+	(.response.content.text 
+		| 
+		try(
+			fromjson 
+			|
+			
+# if that worked, output the index and URL of the lucky entry			
+			$index,
+			$original.log.entries[$index].request.url
 			)
-		)
-	) 
-| 
+	)
+]
+|
 
-# now we are ready for output...
+# delete any entries that are empty (because they failed the try)
+select ( length > 0 )
+|
 
-# this outputs the entry index 
-(["Entry", $index]| join(": ")),
-
-# url
-.request.url,
-
-# this tries to interpret the text content as a json
-(.response.content.text | try(fromjson) catch ("<not JSON>")),
-
-# separator
-"\n============================================="
+# output as a TSV
+@tsv
