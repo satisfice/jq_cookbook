@@ -4,27 +4,22 @@
 #
 
 # Save the original input, because we will need it, below...
-
 . as $original
 | 
 
 # get all the entries
-
 .log.entries 
 | 
 
 # get all the index numbers for the entries
-
 keys 
 | 
 
 # for each entry, save the index number for later...
-
 .[] as $index 
 | 
 
 # ...then go back to the original input and pick out the entry for that index number
-
 $original.log.entries[$index] 
 | 
 
@@ -37,15 +32,12 @@ select(
 | 
 
 # now we are ready for output...
-
 # this outputs the entry index 
-(["Entry", $index]| join(": ")),
+[
+	(["Entry", $index]| join(": ")),
+	$original.log.entries[$index].request.url
+]
+|
 
-# url
-.request.url,
-
-# print the content
-.request.postData.text,
-
-# separator
-"\n============================================="
+# output as a TSV
+@tsv
