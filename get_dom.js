@@ -17,6 +17,6 @@ javascript:
 			try{dict[dom[i].tagName].push(dom[i].outerHTML)}
 			catch(err){dict[dom[i].tagName]=[dom[i].outerHTML]}
 		}
-		download(JSON.stringify(dict),"DOM_Elements","application/json");
+		download(JSON.stringify(dict,null,2),"DOM_Elements","application/json");
 	}
 )();

@@ -17,6 +17,6 @@ javascript:
 			try{dict[dom[i].tagName].push(dom[i].innerText)}
 			catch(err){dict[dom[i].tagName]=[dom[i].innerText]}
 		}
-		download(JSON.stringify(dict),"DOM_InnerText","application/json");
+		download(JSON.stringify(dict,null,2),"DOM_InnerText","application/json");
 	}
 )();

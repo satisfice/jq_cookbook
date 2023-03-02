@@ -15,6 +15,6 @@ javascript:
 		{
 			result[localStorage.key(i)] = localStorage.getItem(localStorage.key(i));
 		}
-		download(JSON.stringify(result),"LocalStorage","application/json")
+		download(JSON.stringify(result,null,2),"LocalStorage","application/json")
 	}
 )();
