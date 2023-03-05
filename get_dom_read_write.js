@@ -21,7 +21,7 @@ javascript:
 				catch(err){dict[tag]=[dom[i].outerHTML]}
 			}
 		}
-		download(JSON.stringify(dict,null,2),"DOM_hiddens","application/json");
+		download(JSON.stringify(dict,null,2),"DOM_read_writes","application/json");
 	}
 )();
 
