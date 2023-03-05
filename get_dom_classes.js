@@ -10,9 +10,9 @@ javascript:
 			a.download = name;  
 			a.click()
 		}
-		classes = document.querySelectorAll('*[class]');
+		dom = document.querySelectorAll('*[class]');
 		const dict = {};
-		for (i=0;i<classes.length;i++)
+		for (i=0;i<dom.length;i++)
 		{
 			if (!(dom[i].tagName in dict))
 			{
