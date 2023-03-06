@@ -12,8 +12,9 @@ javascript:
 		}
 		c = document.querySelectorAll('*'); 
 		a = {}; 
-		for (i=0;i<c.length;i++) 
+		for (i in c) 
 		{
+			try {c[i].attributes["href"]} catch {continue}
 			if (c[i].attributes["href"] != null) 
 			{
 				thelink = c[i].attributes["href"].baseURI;

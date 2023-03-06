@@ -12,13 +12,17 @@ javascript:
 		}
 		dom = document.querySelectorAll('*[id]');
 		const dict = {};
-		for (i=0;i<dom.length;i++)
+		for (i in dom)
 		{
 			if (!(dom[i].tagName in dict))
 			{
 				dict[dom[i].tagName] = {};
 			}
-			dict[dom[i].tagName][ids[i].attributes['id'].value] = 0;
+			try
+			{
+				dict[dom[i].tagName][dom[i].attributes['id'].value] = 0;
+			}
+			catch {}
 		}
 		const out = {};
 		for (i of Object.keys(dict).sort())

@@ -12,7 +12,7 @@ javascript:
 		}
 		dom = document.querySelectorAll('*[style*="hidden"]'); 
 		const dict = {};
-		for (let i in dom)
+		for (i in dom)
 		{
 			tag = dom[i].tagName;
 			if (tag != undefined && tag != "undefined")
