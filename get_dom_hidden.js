@@ -14,6 +14,7 @@ javascript:
 		const dict = {};
 		for (let i in dom)
 		{
+			tag = dom[i].tagName;
 			if (tag != undefined && tag != "undefined")
 			{
 				try{dict[dom[i].tagName].push(dom[i].outerHTML)}
