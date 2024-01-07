@@ -11,8 +11,6 @@ For Windows, clone the repo and set the PATH environment variable to point to it
 
 That way you can run the JJQ batch file from the command-line, wherever you happen to be.
 
-I've also included bookmarklets (the JS files) that I use to create JSONs from web pages that I'm testing. To install each them, create a new bookmark, then copy the contents of the js file into the body of the bookmark. If you click on them after visiting a page, they will download files that can are full of data about that page. You can use JQ to sift through it.
-
 ## Usage
 
 ```jjq <jq file> <optional parameter> <json file>```
