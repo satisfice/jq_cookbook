@@ -14,17 +14,19 @@
 keys 
 | 
 
+[
 # for each entry, save the index number for later...
 .[] as $index 
 | 
 
 # ...then go back to the original input and pick out the entry for that index number
+
 $original.log.entries[$index] 
 | 
 
 # now we are ready for output...
 # we put this into a list so that we can run the next filter on it... 
-[
+
 	.request.url
 ] 
 | 
