@@ -38,10 +38,7 @@ def grab(d):
 # Now take the array and collate it by key
 group_by(.key)
 | 
-
-# Make another array for the output, then...
 [
-
 # for each different key...
 	.[] 
 	|
@@ -64,4 +61,7 @@ group_by(.key)
 			)
 	}
 ]
+|
+
+add
 

@@ -17,7 +17,7 @@ That way you can run the JJQ batch file from the command-line, wherever you happ
 
 *jQ file:* A file with the extension JQ from this repo.
 
-*Optional Parameter:* Some of the JQ files, here take a parameter.
+*Optional Parameter:* Some of the JQ files, here, require a parameter.
 
 *JSON file:* Any JSON file you want to process.
 
