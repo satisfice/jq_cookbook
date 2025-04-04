@@ -9,7 +9,7 @@ Make sure you have installed JQ and that it is on the PATH.
 
 For Windows, clone the repo and set the PATH environment variable to point to it. 
 
-That way you can run the JJQ batch file from the command-line, wherever you happen to be.
+JJQ is a Python program to conveniently serve these scripts and get help. I've included an EXE version. That way you can run the JJQ exe from the command-line, wherever you happen to be.
 
 ## Usage
 

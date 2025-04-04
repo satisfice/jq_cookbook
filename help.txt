@@ -1,4 +1,0 @@
-This batch file runs JQ scripts from a repository.
-
-Usage: JJQ <name of script in repo> <data argument> <json file>
-
