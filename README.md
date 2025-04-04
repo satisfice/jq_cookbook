@@ -13,17 +13,23 @@ JJQ is a Python program to conveniently serve these scripts and get help. I've i
 
 ## Usage
 
-```jjq <jq file> <optional parameter> <json file>```
+```
+usage: JJQ [-h] [--list [SCRIPT] | --listall] [script] [input] [json_file]
 
-*jQ file:* A file with the extension JQ from this repo.
+A wrapper around JQ to serve complex scripts.
 
-*Optional Parameter:* Some of the JQ files, here, require a parameter.
+positional arguments:
+  script           Script file to execute
+  input            Optional parameter for script
+  json_file        JSON file as target
 
-*JSON file:* Any JSON file you want to process.
+options:
+  -h, --help       show this help message and exit
+  --list [SCRIPT]  List all available scripts, or get help on specific script
+  --listall        List all available scripts with capsule descriptions
 
-You can also get a list of the available jq files by doing:
-
-```jjq --help```
+Written by James Bach and Michael Bolton
+```
 
 Each file is commented.
 
