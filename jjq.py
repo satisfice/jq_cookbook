@@ -41,9 +41,9 @@ def display_help(script):
 
 def process_command(script,target,input):
     if input:
-        command = f"jq -r -f {script} --arg myvar {input} {target}"
+        command = f"jq -r -f {script} --arg myvar \"{input}\" \"{target}\""
     else:
-        command = f"jq -r -f {script} {target}"
+        command = f"jq -r -f \"{script}\" \"{target}\""
 
     subprocess.run(command, shell=True)
 
