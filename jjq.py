@@ -1,11 +1,3 @@
-#  TODO:
-#  --walkthrough
-#      for each filter in a .jq file, the preceding comment(s), displays the filter string,
-#      and then runs that filter (including all prior filters)
-
-# assumes that all query files will have the .jq extension
-# assumes that documentation will end by the 75th column
-
 import sys
 import os
 import re

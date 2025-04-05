@@ -1,5 +1,6 @@
-# This script take a JSON and walks through it to find all key value pairs where the value is a scalar or null. 
-# It then makes a dictionary of all the unique values in the JSON for each of those keys.
+# This script allows you to dump the values for a specific key listed in 
+# the output from collate-keys-index.jq. Specify the index number of the
+# key that you want. EXAMPLE "jjq collate-keys-get 5 inputfile.json"
 
 # This function gets an element if it is a leaf node
 def grab(d): 
