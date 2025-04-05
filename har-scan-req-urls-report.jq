@@ -1,3 +1,4 @@
+# For HAR files only.
 # This script traverses a HAR file and gets all the URLs visited.
 # It outputs the URL of each request, with a timestamp and index number.
 #

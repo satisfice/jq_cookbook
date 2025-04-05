@@ -1,3 +1,4 @@
+# For HAR files only.
 # This script traverses a HAR file and finds each response that contains json or text mime type.
 # It outputs the URL of each request, with an index number and pretty-printed version of the 
 # content interpreted as a json.

@@ -1,3 +1,4 @@
+# For HAR files only.
 # This script traverses a HAR file and finds each response that can be interpreted as a JSON.
 # It outputs the URL of each request, with an index number
 #

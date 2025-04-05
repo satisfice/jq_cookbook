@@ -1,6 +1,7 @@
-# This script traverses a HAR file and scans it for a list of unique domains (distinct from unique urls) that were called. 
-# Each domain is followed by a list of numbers indicating the HAR file entry, which can be retrieved
-# using the har-get-res script.
+# For HAR files only.
+# This script traverses a HAR file and scans it for a list of unique domains (distinct from unique urls)
+# that were called. Each domain is followed by a list of numbers indicating the HAR file entry, 
+# which can be retrieved using the har-get-res script.
 
 # save the original HAR file to a variable; we'll need that later.
 . as $original 

@@ -1,3 +1,4 @@
+# For HAR files only.
 # This script traverses a HAR file and finds each URL and referrer pair.
 # It outputs a list of all unique pairs
 

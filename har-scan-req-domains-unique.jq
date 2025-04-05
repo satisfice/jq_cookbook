@@ -1,4 +1,6 @@
-# This script traverses a HAR file and scans it for a list of unique domains (distinct from unique urls) that were called.
+# For HAR files only.
+# This script traverses a HAR file and scans it for a list of unique domains (distinct from unique urls) 
+# that were called.
 
 # save the original HAR file to a variable; we'll need that later.
 . as $original 
