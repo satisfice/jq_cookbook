@@ -2,10 +2,11 @@ import sys
 import os
 import re
 import subprocess
-from colorama import init as colorama_init
-from colorama import Fore
-from colorama import Style
+from colorama import init as colorama_init # type: ignore
+from colorama import Fore # type: ignore
+from colorama import Style # type: ignore
 import argparse
+from stat import S_ISFIFO
 
 def get_executable_path():
     if getattr(sys, 'frozen', False):
@@ -41,11 +42,11 @@ def display_help(script):
 
 def process_command(script,target,input):
     if input:
-        command = f"jq -r -f {script} --arg myvar \"{input}\" \"{target}\""
+        command = f"jq -r -f {script} --arg myvar \"{input}\" -"
     else:
-        command = f"jq -r -f \"{script}\" \"{target}\""
+        command = f"jq -r -f \"{script}\" -"
 
-    subprocess.run(command, shell=True)
+    subprocess.run(command, shell=True, stdin=target, text=True)
 
 def parse_arguments():
     """Parse command line arguments."""
@@ -93,11 +94,20 @@ def parse_arguments():
     # Validate arguments
     if not args.list and not args.listall:
         # In normal mode, script and json_file are required
-        if args.input is None:
-            parser.error("Please specify a JQ script and target JSON file.")
-        elif args.json_file is None:
-            args.json_file = args.input
-            args.input = None    
+        if args.script is None:
+            parser.error("Please specify a JQ script.")
+        if S_ISFIFO(os.fstat(0).st_mode):
+            args.json_file = sys.stdin
+        else:                
+            if args.input is None:
+                parser.error("Please specify a target JSON file.")
+            else:
+                if args.json_file is None:
+                    args.json_file = open(args.input,"r",encoding="utf8")
+                    args.input = None
+                else:
+                    args.json_file = open(args.json_file,"r",encoding="utf8")
+
     return args
 
 
