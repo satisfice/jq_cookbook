@@ -17,37 +17,39 @@ keys
 | 
 
 # for each entry, save the index number for later...
+[
 .[] as $index 
 | 
 
 # ...then go back to the original input and pick out the entry for that index number
-$original.log.entries[$index] 
-| 
 
-# check if the content type include "json" or "text"
-# (the reason we check for text type is that in some webapps jsons are mislabeled as text type)
-select(
-	.response 
-	| select(.headers[] 
-		| select(.name | test("content-type";"i")) 
-		| select(
-				(.value | contains("json"))
-				or
-				(.value | contains("text"))
+	$original.log.entries[$index] 
+	| 
+
+	# check if the content type include "json" or "text"
+	# (the reason we check for text type is that in some webapps jsons are mislabeled as text type)
+	select(
+		.response 
+		| select(.headers[] 
+			| select(.name | test("content-type";"i")) 
+			| select(
+					(.value | contains("json"))
+					or
+					(.value | contains("text"))
+				)
 			)
-		)
-	) 
-| 
+		) 
+	| 
 
-# now we are ready for output...
-# this outputs the entry index 
-(["Entry", $index]| join(": ")),
+	# now we are ready for output...
+	# this outputs the entry index 
+	{($index | tostring):
+		{
+			"url": .request.url,
+			"content":
 
-# url
-.request.url,
-
-# this tries to interpret the text content as a json
-(.response.content.text | try(fromjson) catch ("<not JSON>")),
-
-# separator
-"\n============================================="
+			# this tries to interpret the text content as a json
+			(.response.content.text | try(fromjson) catch ("<not JSON>"))
+		}
+	}
+	]
