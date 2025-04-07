@@ -18,10 +18,10 @@ keys
 
 # for each entry, save the index number for later...
 [
-.[] as $index 
-| 
+	.[] as $index 
+	| 
 
-# ...then go back to the original input and pick out the entry for that index number
+	# ...then go back to the original input and pick out the entry for that index number
 
 	$original.log.entries[$index] 
 	| 
@@ -52,4 +52,4 @@ keys
 			(.response.content.text | try(fromjson) catch ("<not JSON>"))
 		}
 	}
-	]
+]
