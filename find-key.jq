@@ -20,7 +20,7 @@ select(
 |
 
 # prepend some commas to make the rest of this work...
-"." + .
+"," + .
 | 
 
 # put brackets around numbers to indicate array indices
