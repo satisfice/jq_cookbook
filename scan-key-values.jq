@@ -8,10 +8,11 @@
 	select($path[-1]==$myvar) 
 	| 
 	
-	getpath($path)] 
-	| 
+	getpath($path)
+] 
+| 
 	
-	unique 
-	| 
+unique 
+| 
 	
-	.[]
+.[]
